@@ -1,0 +1,73 @@
+﻿@model TravelShuttle.WebUI.Models.WebSiteModel
+
+@{
+    var defaultCurrentValue = "id=\"current\"";
+    var HomeCurrent = "";
+    var AboutUsCurrent = "";
+    var ServicesCurrent = "";
+    var BlogCurrent = "";
+    var ToursCurrent = "";
+    var FaqCurrent = "";
+    var ContactCurrent = "";
+
+    switch (ViewBag.CurrentPage)
+    {
+        case "AboutUs":
+            AboutUsCurrent = defaultCurrentValue;
+            break;
+        case "Services":
+            ServicesCurrent = defaultCurrentValue;
+            break;
+        case "Blog":
+            BlogCurrent = defaultCurrentValue;
+            break;
+        case "Tours":
+            ToursCurrent = defaultCurrentValue;
+            break;
+        case "Faq":
+            FaqCurrent = defaultCurrentValue;
+            break;
+        case "Contact":
+            ContactCurrent = defaultCurrentValue;
+            break;
+        default:
+            HomeCurrent = defaultCurrentValue;
+            break;
+    }
+
+}
+
+<nav id="navigation" class="style-1">
+
+    <div class="left-corner"></div>
+    <div class="right-corner"></div>
+
+    <ul class="menu" id="responsive">
+
+        <li><a href="/Home" @Html.Raw(HomeCurrent)><i class="icon-home icon-large"></i> Anasayfa</a></li>
+
+        <li><a href="/AboutUs" @Html.Raw(AboutUsCurrent)><i class="icon-cab"></i> Hakkımızda</a></li>
+
+        <li><a href="/Services" @Html.Raw(ServicesCurrent)><i class="icon-space-shuttle"></i> Hizmetlerimiz</a>
+            <ul>
+                @foreach (var service in Model.services)
+                {
+                    <li><a href="/Services/@service.UrlName">@service.Name</a></li>
+                }
+            </ul>
+        </li>
+
+        <li><a href="/Blog"   @Html.Raw(BlogCurrent)><i class="icon-pencil"></i> Blog</a></li>
+        <li><a href="/Tours"   @Html.Raw(ToursCurrent)><i class="icon-suitcase"></i> Gezi Turları</a>
+            <ul>
+                @foreach (var tour in Model.tours)
+                {
+                    <li><a href="/Tour/@tour.UrlName">@tour.Name</a></li>
+                }
+            </ul>
+            </li>
+        <li><a href="/FAQ"  @Html.Raw(FaqCurrent)><i class="icon-question"></i> Sıkça Sorulan Sorular</a></li>
+        <li><a href="/Contact"   @Html.Raw(ContactCurrent)><i class="icon-envelope"></i> İletişim</a></li>
+
+    </ul>
+</nav>

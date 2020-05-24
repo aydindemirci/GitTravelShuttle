@@ -1,0 +1,29 @@
+﻿@using TravelShuttle.Entities.Enums
+@using TravelShuttle.WebUI.MiddleWares
+@model TravelShuttle.WebUI.Models.WebSiteModel
+@inject TravelShuttle.WebUI.MiddleWares.WebFunctions WebFunctions
+
+<header id="header">
+
+    <div class="ten columns">
+        <div id="logo">
+            <h1><a href="#"><img @Html.Raw(WebFunctions.GetImageTagProperty(ImageConstant.LogoBlack))/></a></h1>
+            <div id="tagline">@Html.DisplayFor(m=>m.definition.LogoTitle1)</div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+
+    <div class="six columns">
+        <ul class="social-icons">
+            <li class="instagram"><a href="@Html.DisplayFor(m=>m.definition.Instagram)">Instagram</a></li>
+            <li class="twitter"><a href="@Html.DisplayFor(m => m.definition.Twitter)">Twitter</a></li>
+            <li class="facebook"><a href="@Html.DisplayFor(m => m.definition.Facebook)">Facebook</a></li>
+
+        </ul>
+
+        <div class="clearfix"></div>
+        <div class="contact-details">Telefon Numarası: @Html.DisplayFor(m=>m.definition.PhoneNumber)</div>
+        <div class="clearfix"></div>
+
+    </div>
+</header>

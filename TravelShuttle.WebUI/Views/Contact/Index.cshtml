@@ -1,0 +1,93 @@
+﻿@model TravelShuttle.WebUI.Models.ContactModel
+
+@{
+    Layout = "~/Views/_Layout.cshtml";
+}
+@section headTag
+{
+    <meta name="description" content="Havalimanı transfer, Vip transfer, Servis ve Otobüs kiralama için iletişim bilgilerimiz">
+}
+
+    <div id="content">
+
+        @await Component.InvokeAsync("PageHeader",new {linkUp ="Anasayfa", linkPage="İletişim"})
+
+        <div class="container floated">
+
+            <div class="four floated sidebar left">
+                <aside class="sidebar padding-reset">
+
+                    <div class="widget">
+                        <h4>Transfer Hizmetleri</h4>
+                        <p>Sizin için her yerdeyiz.Bir telefonunuz ile istediğinize yere gelebiliriz!.</p>
+                    </div>
+
+                    <div class="widget">
+                        <h4>Genel Bilgiler</h4>
+
+                        <ul class="contact-informations">
+                            <li><span class="address">@Model.Definition.Adress</span></li>
+                        </ul>
+
+                        <ul class="contact-informations second">
+                            <li><i class="halflings headphones"></i> <p>@Model.Definition.PhoneNumber</p></li>
+                            <li><i class="halflings envelope"></i> <p>@Model.Definition.Email</p></li>
+                        </ul>
+                    </div>
+
+                    <div class="widget">
+                        <h4>Çalışma Saatleri</h4>
+                        <ul class="contact-informations hours">
+                            <li><i class="halflings time"></i>Pazartesi - Pazar <span class="hours">00:00 - 23:59</span></li>
+                            <li><i class="halflings time"></i>7/24 Hizmetinizdeyiz</li>
+                        </ul>
+                    </div>
+
+                </aside>
+            </div>
+
+            <div class="eleven floated right">
+                <section class="page-content">
+
+
+                    <h3 class="margin">İletişim Formu</h3>
+                    <p class="margin">Aşağıdaki formu doldurarak size ulaşmamızı sağlayabilirsiniz! </p>
+
+                    <!-- Contact Form -->
+                    <section id="contact">
+
+                        <!-- Success Message -->
+                        <mark id="message"></mark>
+
+                        <!-- Form -->
+                        <form name="contactform" id="contactform">
+
+                            <fieldset>
+
+                                <div>
+                                    <label for="name" accesskey="U">Name:</label>
+                                    <input name="name" type="text" id="name" />
+                                </div>
+
+                                <div>
+                                    <label for="email" accesskey="E">Email: <span>*</span></label>
+                                    <input name="email" type="email" id="email" />
+                                </div>
+
+                                <div>
+                                    <label for="comments" accesskey="C">Message: <span>*</span></label>
+                                    <textarea name="comments" cols="40" rows="3" id="comments" spellcheck="true"></textarea>
+                                </div>
+
+                            </fieldset>
+
+                            <input type="submit" class="submit" id="submit" value="Mesajı Gönder" />
+                            <div class="clearfix"></div>
+
+                        </form>
+
+                    </section>
+                </section>
+            </div>
+        </div>
+    </div>

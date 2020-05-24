@@ -1,0 +1,53 @@
+﻿@model TravelShuttle.WebUI.Models.ServicesModel
+
+@{
+    Layout = "~/Views/_Layout.cshtml";
+}
+@section headTag{
+    <meta name="description" content="@Html.DisplayFor(m => m.currentService.MiniParagraph)">
+}
+
+<div id="content">
+
+    @await Component.InvokeAsync("PageHeader", new { linkUp = "Anasayfa", linkPage = "Hizmetlerimiz" })
+
+</div>
+
+<div class="container floated">
+
+    <div class="eleven floated">
+        <div class="shop-page page-content">
+
+            <div class="eleven columns">
+                <h3 class="margin-reset">@Html.DisplayFor(m => m.currentService.Name)</h3><br />
+                @Html.Raw(Model.currentService.Paragraph)
+            </div>
+
+            <div class="clearfix"></div>
+        </div>
+    </div>
+
+    <div class="four floated sidebar right">
+        <aside class="sidebar">
+            <div class="widget">
+                <h4>Tags</h4>
+                <nav class="tags">
+                    @foreach (var tag in Model.tags)
+                    {
+                        <a href="#">@tag.TagName</a>
+                    }
+                </nav>
+            </div>
+
+            <nav class="widget">
+                <h4>Hizmetlerimiz</h4>
+                <ul class="categories">
+                    @foreach (var service in Model.services)
+                    {
+                        <li><a href="/services/@service.UrlName">@service.Name</a></li>
+                    }
+                </ul>
+            </nav>
+        </aside>
+    </div>
+</div>

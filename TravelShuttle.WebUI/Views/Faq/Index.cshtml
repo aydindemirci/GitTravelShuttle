@@ -1,0 +1,29 @@
+﻿@model TravelShuttle.WebUI.Models.FaqModel
+@{
+    Layout = "~/Views/_Layout.cshtml";
+}
+@section headTag
+{
+    <script src="~/WebFiles/scripts/jquery.selectnav.js"></script>
+    <script src="~/WebFiles/scripts/custom.js"></script>
+    <meta name="description" content="transfer ve ulaşım hizmetlerimiz hakkında bilgi edinebilirsiniz.">
+
+}
+<div id="content">
+    @await Component.InvokeAsync("PageHeader", new { linkUp = "Anasayfa", linkPage = "Sıkça Sorulan Sorular" })
+</div>
+
+<div class="page-content">
+    <div class="container">
+        <h3>Mydemturizm.com olarak size en iyi hizmeti sunmak için buradayız.Sizlerden gelen soruları burda paylaştık!.</h3><br />
+        <div class="accordion">
+
+            @foreach (var question in Model.Questions)
+            {
+                <h3><span class="ui-accordion-header-icon ui-icon ui-accordion-icon ui-accordion-icon"></span>@question.QuestionName</h3>
+                <div><p>@question.Answer</p></div>
+            }
+
+        </div>
+    </div>
+</div>

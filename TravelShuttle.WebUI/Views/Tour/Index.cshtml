@@ -1,0 +1,70 @@
+﻿@using TravelShuttle.WebUI.MiddleWares
+@model TravelShuttle.WebUI.Models.TourModel
+@inject TravelShuttle.WebUI.MiddleWares.WebFunctions WebFunctions
+
+
+@{
+    Layout = "~/Views/_Layout.cshtml";
+}
+@section headTag{
+    <meta name="description" content="@Html.DisplayFor(m => m.TourPage.MiniParagraph)">
+}
+<div id="content">
+
+    @await Component.InvokeAsync("PageHeader", new { linkUp = "Anasayfa", linkPage = "Tur" })
+
+</div>
+
+<div class="container floated">
+    <div class="eleven floated">
+
+        <article class="post">
+
+            <figure class="post-img picture">
+                <a href="#" rel="fancybox" title="@Model.TourPage.Name">
+                    <img @Html.Raw(WebFunctions.GetImageTagProperty(Model.TourPage.ImageId)) />
+                </a>
+            </figure>
+
+            <section class="date">
+                <span class="day">@Model.TourPage.AddedDate.GetValueOrDefault().Day</span>
+                <span class="month">@Model.TourPage.AddedDate.GetValueOrDefault().ToString("MMM")</span>
+            </section>
+
+            <section class="post-content">
+                <header class="meta">
+                    <h2><a href="#">@Model.TourPage.Name</a></h2>
+                </header>
+                @Html.Raw(Model.TourPage.Paragraph)
+            </section>
+
+        </article>
+    </div>
+
+    <div class="four floated sidebar right">
+        <aside class="sidebar">
+
+            <nav class="widget">
+                <h4>Gezi Turları</h4>
+                <ul class="categories">
+                    @foreach (var tour in Model.TourPages)
+                    {
+                        <li><a href="/tour/@tour.UrlName">@tour.Name</a></li>
+                    }
+                </ul>
+            </nav>
+
+            <!-- Tags -->
+            <div class="widget">
+                <h4>Tags</h4>
+                <nav class="tags">
+                    @foreach (var tag in Model.Tags)
+                    {
+                        <a href="#">@tag.TagName</a>
+                    }
+                </nav>
+            </div>
+
+        </aside>
+    </div>
+</div>

@@ -1,0 +1,73 @@
+﻿@model TravelShuttle.WebUI.Models.WebSiteModel
+@{
+    Layout = null;
+}
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>https://mydemturizm.com/</loc>
+        <lastmod>@DateTime.Now.ToString("yyyy-MM-dd")</lastmod>
+        <changefreq>always</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://mydemturizm.com/Home</loc>
+        <lastmod>@DateTime.Now.ToString("yyyy-MM-dd")</lastmod>
+        <changefreq>always</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://mydemturizm.com/AboutUs</loc>
+        <lastmod>@DateTime.Now.ToString("yyyy-MM-dd")</lastmod>
+        <changefreq>always</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://mydemturizm.com/Services</loc>
+        <lastmod>@DateTime.Now.ToString("yyyy-MM-dd")</lastmod>
+        <changefreq>always</changefreq>
+        <priority>0.6</priority>
+    </url>
+    @foreach (var pagex in Model.services)
+    {
+        <url>
+            <loc>https://mydemturizm.com/Services/@pagex.UrlName</loc>
+            <lastmod>@DateTime.Now.ToString("yyyy-MM-dd")</lastmod>
+            <changefreq>always</changefreq>
+            <priority>1.0</priority>
+        </url>
+    }
+    <url>
+        <loc>https://mydemturizm.com/Blog</loc>
+        <lastmod>@DateTime.Now.ToString("yyyy-MM-dd")</lastmod>
+        <changefreq>always</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://mydemturizm.com/Tours</loc>
+        <lastmod>@DateTime.Now.ToString("yyyy-MM-dd")</lastmod>
+        <changefreq>always</changefreq>
+        <priority>0.5</priority>
+    </url>
+    @foreach (var pagex in Model.tours)
+    {
+        <url>
+            <loc>https://mydemturizm.com/Services/@pagex.UrlName</loc>
+            <lastmod>@DateTime.Now.ToString("yyyy-MM-dd")</lastmod>
+            <changefreq>always</changefreq>
+            <priority>0.7</priority>
+        </url>
+    }
+    <url>
+        <loc>https://mydemturizm.com/FAQ</loc>
+        <lastmod>@DateTime.Now.ToString("yyyy-MM-dd")</lastmod>
+        <changefreq>always</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://mydemturizm.com/contact</loc>
+        <lastmod>@DateTime.Now.ToString("yyyy-MM-dd")</lastmod>
+        <changefreq>always</changefreq>
+        <priority>0.6</priority>
+    </url>
+</urlset>

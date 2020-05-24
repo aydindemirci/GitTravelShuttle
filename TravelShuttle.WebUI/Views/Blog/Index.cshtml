@@ -1,0 +1,50 @@
+﻿@using TravelShuttle.WebUI.MiddleWares
+@model TravelShuttle.WebUI.Models.BlogModel
+@inject TravelShuttle.WebUI.MiddleWares.WebFunctions WebFunctions
+
+@{
+    Layout = "~/Views/_Layout.cshtml";
+}
+@section headTag{
+    <meta name="description" content="Ulaşım hizmetlerimiz ile ilgili gelişmelerimizi, yaptığımız seyahatleri, turizm gelişmelerini burdan takip edebilirsiniz.">
+}
+<div id="content">
+
+    @await Component.InvokeAsync("PageHeader", new { linkUp = "Anasayfa", linkPage = "Blog" })
+
+</div>
+
+<div class="container floated">
+
+    <div class="sixteen floated">
+        @foreach (var blogPage in Model.blogPages)
+        {
+            <article class="post">
+                <figure class="post-img">
+                    <a href="#"><img @Html.Raw(WebFunctions.GetImageTagProperty(blogPage.ImageId)) /></a>
+                </figure>
+
+                <section class="date">
+                    <span class="day">@blogPage.AddedDate.GetValueOrDefault().Day</span>
+                    <span class="month">@blogPage.AddedDate.GetValueOrDefault().ToString("MMM")</span>
+                </section>
+
+                <section class="post-content">
+                    <header class="meta"><h2><a href="#">@blogPage.Name</a></h2></header>
+                    @Html.Raw(blogPage.Paragraph)
+                </section>
+            </article>
+            <div class="line"></div>
+        }
+
+        <nav class="pagination">
+            <ul>
+                <li><a href="#" class="current">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">Next</a></li>
+            </ul>
+            <div class="clearfix"></div>
+        </nav>
+
+    </div>
+</div>

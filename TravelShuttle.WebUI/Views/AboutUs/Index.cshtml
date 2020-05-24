@@ -1,0 +1,82 @@
+﻿@model TravelShuttle.WebUI.Models.AboutUsModel
+@{
+    Layout = "~/Views/_Layout.cshtml";
+}
+@section headTag
+{
+    <script src="~/WebFiles/scripts/jquery.selectnav.js"></script>
+    <script src="~/WebFiles/scripts/custom.js"></script>
+    <meta name="description" content="Vip Transfer Hizmetleri. Uygun fiyatlar ile Ankara'da iş seyahatleri, özel seyahatler ve havalimanı karşılama için servis sunmaktayız.">
+}
+<div id="content">
+
+    @await Component.InvokeAsync("PageHeader", new { linkUp = "Anasayfa", linkPage = "Hakkımızda" })
+
+    <div class="page-content">
+        <div class="container">
+            <div class="two-thirds column">
+                <h3 style="margin: -10px 0 15px 0;">Biz Kimiz?</h3>
+                <p>
+                    Ulaşım ve Turizm sektöründe 2007 yılından bugüne kadar Ankara da ulaşım hizmeti vermekteyiz.<b>70 TL'den</b> başlayan fiyatlarla geniş kapsamlı filomuz ile sizi dilediğiniz saatte bulunduğunuz noktadan gideceğiniz adrese konforlu ve güvenli bir şekilde ulaştırıyoruz. Uygun fiyatlar ile <i>Ankara</i> da iş seyahatleri , özel seyahatler , ya da <i>havalimanı</i> karşılama için servis sunmaktayız.
+                </p>
+                <p>
+                    Zaman ve Mesafe farketmeden kendimizi size göre koordine edip ihtiyaçlarınızı vakit kaybı yaşatmadan ekonomik konforlu ve profesyonel olarak sizlere servis ediyoruz.
+                </p>
+                <p>
+                    <i>D2 yetki belgesine</i> sahip olup yöneticilerimiz ODY belgesine sahiptir. Sürücülerimiz SRC ve Psikoteknik belgelerine sahiptir.
+                </p>
+                <p>Sizin değerli misafirlerinizi ve yolcularınızı havalimanı, otel ve benzeri transfer hizmetlerini sağlamak için müşteri memnuniyetini ve operasyonel mükemmeliyeti öncelik belirlemiş bir firma olarak karşınızdayız</p>
+            </div>
+
+            <div class="one-third column">
+                <h3 style="margin: -10px 0 15px 0;">Destek ve İletişim</h3>
+                <div class="large-notice">
+                    <h2>Operasyon Merkezi</h2>
+                    <p>Rezervasyon ve Destek talepleriniz için Operasyon Merkezimiz 24 saat hizmet vermektedir.</p>
+                    <p>@Html.DisplayFor(p => p.definition.PhoneNumber)</p>
+                    <p>@Html.DisplayFor(p => p.definition.Email)</p>
+                    <a href="/contact" class="button medium color">Bize Ulaşın..</a>
+                </div>
+            </div>
+        </div>
+        <br />
+
+        <div class="container">
+
+            <!-- Extras -->
+            <div class="eight columns">
+                <br />
+                <h3 class="margin-reset">Kurumsal Müşterilerimiz</h3><br />
+
+                <div class="accordion">
+                    @foreach (var customer in Model.customers)
+                    {
+                        <h3>
+                            <span class="ui-accordion-header-icon ui-icon ui-accordion-icon ui-accordion-icon">
+                            </span>@customer.Name
+                        </h3>
+                        <div><p>@customer.Explanation</p></div>
+                    }
+                </div>
+            </div>
+
+            <div class="eight columns">
+                <br />
+                <h3 class="margin-reset">Becerilerimiz</h3><br />
+                <div id="skill-bars">
+                    <div class="skill-bar"><div class="skill-bar-content" data-percentage="100"></div><span class="skill-title">Konfor ve Kalite</span></div>
+                    <div class="skill-bar"><div class="skill-bar-content" data-percentage="100"></div><span class="skill-title">Tecrübe</span></div>
+                    <div class="skill-bar"><div class="skill-bar-content" data-percentage="100"></div><span class="skill-title">Yetki ve Belgeler</span></div>
+                    <div class="skill-bar"><div class="skill-bar-content" data-percentage="100"></div><span class="skill-title">Müşteri Memnuniyet</span></div>
+                    <div class="skill-bar"><div class="skill-bar-content" data-percentage="100"></div><span class="skill-title">Güven ve Huzur</span></div>
+                </div>
+            </div>
+
+        </div>
+
+        <br />
+        <br />
+    </div>
+</div>
+
+

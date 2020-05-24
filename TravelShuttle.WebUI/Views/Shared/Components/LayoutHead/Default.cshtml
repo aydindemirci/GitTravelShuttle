@@ -1,0 +1,9 @@
+﻿@using TravelShuttle.Entities.Enums
+@using TravelShuttle.WebUI.MiddleWares
+@model TravelShuttle.WebUI.Models.WebSiteModel
+@inject TravelShuttle.WebUI.MiddleWares.WebFunctions WebFunctions
+
+
+<title>Ankara Havalimanı Transfer - Vip Transfer - Minibus Kiralama</title>
+<link rel="shortcut icon" type="image/x-icon" @Html.Raw(WebFunctions.GetImageTagProperty(ImageConstant.Icon).Replace("src=", "href=")) />
+<link rel="stylesheet" href="~/WebFiles/css/colors/blue.css" id="colors">

@@ -1,0 +1,161 @@
+﻿@using TravelShuttle.Entities.Concrete
+@using TravelShuttle.WebUI.MiddleWares
+@inject TravelShuttle.WebUI.MiddleWares.WebFunctions WebFunctions
+
+@model TravelShuttle.WebUI.Models.HomeModel
+
+@{
+    Layout = "~/Views/_Layout.cshtml";
+}
+
+@section headTag
+{
+    <meta name="description" content="Ankara Vip Transfer, Havalimanı Transfer, Servis ve Otobüs Kiralama Hizmetleri">
+
+    <script src="~/WebFiles/scripts/jquery.jcarousel.js"></script>
+    <script src="~/WebFiles/scripts/jquery.flexslider.js"></script>
+
+    <script src="~/WebFiles/scripts/jquery.selectnav.js"></script>
+    <script src="~/WebFiles/scripts/custom.js"></script>
+    <script src="~/WebFiles/scripts/jquery.fancybox.min.js"></script>
+    <script src="~/WebFiles/scripts/jquery.isotope.min.js"></script>
+
+    <script src="~/WebFiles/scripts/jquery.contact.js"></script>
+}
+
+<section id="layerslider2-container">
+    <div id="layerslider2" style="width: 1020px; height: 450px; margin: 0 auto;">
+
+        <article class="ls-layer2">
+            <img class="ls-bg2" src="https://narinvipturizm.com/AYDIN/images/slide-01.jpg" alt="">
+        </article>
+
+    </div>
+</section>
+
+<div class="container">
+
+    <section class="icon-box-container">
+
+        <div class="one-third column">
+            <article class="icon-box">
+                <i class="icon-clock-o"></i>
+                <h3>7 / 24 Hizmet</h3>
+                <p>Günün her saati, istediğiniz her zaman burdayız.</p>
+            </article>
+        </div>
+
+        <div class="one-third column">
+            <article class="icon-box">
+                <i class="icon-user"></i>
+                <h3>Uzman Personel</h3>
+                <p>Tecrübeli ve Saygın çalışma arkadaşlarımız sizinle çalışmayı beklemektedir.</p>
+            </article>
+        </div>
+
+        <div class="one-third column">
+            <article class="icon-box">
+                <i class="icon-flask"></i>
+                <h3>Güvenli ve Konforlu</h3>
+                <p>Bakanlığa ait tüm belgelere sahip araçlarımız zamanında bakımları yapılmaktadır.Konforunuz için sürekli olarak yenilenmektedir.</p>
+            </article>
+        </div>
+
+    </section>
+
+</div>
+
+<div class="container floated">
+    <div class="blank floated">
+
+        <div class="four columns carousel-intro">
+            <section class="entire">
+                <h3>Araçlarımız</h3>
+                <p>Araçlarımızı sürekli olarak yenilemekteyiz. Güncel araç bilgisi için bizimle iletişime geçin..</p>
+            </section>
+            <div class="carousel-navi">
+                <div id="work-prev" class="arl jcarousel-prev"><i class="icon-chevron-left"></i></div>
+                <div id="work-next" class="arr jcarousel-next"><i class="icon-chevron-right"></i></div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+
+        <section class="jcarousel recent-work-jc">
+            <ul>
+                @foreach (var car in Model.Cars)
+                {
+                    <li class="four columns">
+                        <a href="#" class="portfolio-item">
+                            <figure>
+                                <img @Html.Raw(WebFunctions.GetImageTagProperty(car.ImageId)) />
+                                <figcaption class="item-description">
+                                    <h5>@car.Brand @car.Model</h5>
+                                    <span>@car.PassengerNumber Kişilik @car.Type</span>
+                                </figcaption>
+                            </figure>
+                        </a>
+                    </li>
+                }
+            </ul>
+        </section>
+
+    </div>
+</div>
+
+<div class="container">
+
+    <div class="eight columns">
+
+        <h3 class="margin-1">Bizden Haberler <span>/ Bloğumuzdan</span></h3>
+        @foreach (var blog in Model.BlogsPages)
+        {
+            <div class="four columns alpha">
+                <article class="recent-blog">
+                    <section class="date">
+                        <span class="day">@blog.AddedDate.GetValueOrDefault().Day</span>
+                        <span class="month">@blog.AddedDate.GetValueOrDefault().ToString("MMM")</span>
+                    </section>
+                    <h4><a href="/Blog">@blog.Name</a></h4>
+                    @Html.Raw(blog.MiniParagraph)
+                </article>
+            </div>
+        }
+    </div>
+
+    <div class="eight columns">
+
+        <h3 class="margin-1">Yorumlar <span>/ Müşterilerimizin Görüşleri</span></h3>
+
+        <section class="flexslider testimonial-slider">
+            <ul class="slides">
+                <li class="testimonial">
+                    <div class="testimonials">Eğlenceli ve konforlu bir geziydi.Ali Kaptana Teşekkürler.</div>
+                    <div class="testimonials-bg"></div>
+                    <div class="testimonials-author">Aydın, <span>Yazılım Uzmanı</span></div>
+                </li>
+
+                <li class="testimonial">
+                    <div class="testimonials">Teşekkürler.</div>
+                    <div class="testimonials-bg"></div>
+                    <div class="testimonials-author">Hasan <span> Doktor</span></div>
+                </li>
+            </ul>
+        </section>
+        <section class="flexslider testimonial-slider">
+            <ul class="slides">
+                <li class="testimonial">
+                    <div class="testimonials">Eğlenceli ve konforlu bir geziydi.Ali Kaptana Teşekkürler.</div>
+                    <div class="testimonials-bg"></div>
+                    <div class="testimonials-author">Aydın, <span>Yazılım Uzmanı</span></div>
+                </li>
+
+                <li class="testimonial">
+                    <div class="testimonials">Teşekkürler.</div>
+                    <div class="testimonials-bg"></div>
+                    <div class="testimonials-author">Hasan <span> Doktor</span></div>
+                </li>
+            </ul>
+        </section>
+    </div>
+
+</div>

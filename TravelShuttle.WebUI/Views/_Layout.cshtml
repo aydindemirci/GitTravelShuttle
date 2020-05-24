@@ -1,0 +1,55 @@
+﻿
+<!DOCTYPE html>
+<!--[if IE 8 ]><html class="ie ie8" lang="tr"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html lang="tr">
+<!--<![endif]-->
+<head>
+
+    <!--[if lt IE 9]>
+        <script src="https://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="~/WebFiles/css/style.css">
+    <link rel="stylesheet" href="~/WebFiles/css/icons.css">
+    <script src="~/WebFiles/scripts/jquery.modernizr.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+    @await Component.InvokeAsync("LayoutHead")
+    @RenderSection("headTag", required: false)
+</head>
+<body>
+    <div id="wrapper">
+        <div id="top-line"></div>
+        <div class="container">
+            @await Component.InvokeAsync("Header")
+            <div class="clearfix"></div>
+        </div>
+
+        @await Component.InvokeAsync("Menu")
+        <div class="clearfix"></div>
+
+        <div id="content">
+            @RenderBody()
+        </div>
+    </div>
+
+    @await Component.InvokeAsync("Footer")
+    <script type="text/javascript">
+        (function () {
+            var options = {
+                whatsapp: "+905071463387",
+                call_to_action: "Merhaba,MyDem Transfer Shuttle",
+                position: "right",
+            };
+            var proto = document.location.protocol, host = "whatshelp.io", url = proto + "//static." + host;
+            var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = url + '/widget-send-button/js/init.js';
+            s.onload = function () { window.WhWidgetSendButton.init(host, proto, options); };
+            var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
+        })();
+    </script>
+</body>
+</html>

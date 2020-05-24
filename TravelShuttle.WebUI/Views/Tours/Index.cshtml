@@ -1,0 +1,61 @@
+﻿@using TravelShuttle.WebUI.MiddleWares
+@model TravelShuttle.WebUI.Models.ToursModel
+@inject TravelShuttle.WebUI.MiddleWares.WebFunctions WebFunctions
+
+@{
+    Layout = "~/Views/_Layout.cshtml";
+}
+@section headTag{
+    <meta name="description" content="Ankara'dan Gezi Turları, gezi turları, kültür turu için servis ve otobüs kiralama ">
+}
+<div id="content">
+
+    @await Component.InvokeAsync("PageHeader", new { linkUp = "Anasayfa", linkPage = "Gezi Turları" })
+
+</div>
+
+
+<div class="container floated">
+
+    <div class="sixteen floated">
+
+        @foreach (var tour in Model.TourPages)
+        {
+            <article class="post medium">
+
+                <div class="medium-image">
+                    <figure class="post-img picture">
+                        <a href="/tour/@tour.UrlName"><img @Html.Raw(WebFunctions.GetImageTagProperty(tour.ImageId)) /></a>
+                    </figure>
+                </div>
+
+                <section class="date">
+                    <span class="day">@tour.AddedDate.GetValueOrDefault().Day</span>
+                    <span class="month">@tour.AddedDate.GetValueOrDefault().ToString("MMM")</span>
+                </section>
+
+                <div class="medium-content">
+                    <header class="meta">
+                        <h2><a href="/tour">@tour.Name</a></h2>
+                    </header>
+                    @Html.Raw(tour.MiniParagraph)
+                    <a href="/tour/@tour.UrlName" class="button color">İncele</a>
+                </div>
+            </article>
+
+            <div class="line"></div>
+        }
+
+
+        <!-- Pagination -->
+        <nav class="pagination">
+            <ul>
+                <li><a href="#" class="current">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">Next</a></li>
+            </ul>
+            <div class="clearfix"></div>
+        </nav>
+
+    </div>
+</div>

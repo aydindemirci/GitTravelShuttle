@@ -1,0 +1,110 @@
+﻿@using TravelShuttle.Entities.Enums
+@using TravelShuttle.WebUI.MiddleWares
+@model TravelShuttle.WebUI.Models.WebSiteModel
+@inject TravelShuttle.WebUI.MiddleWares.WebFunctions WebFunctions
+
+<footer id="footer">
+    <div class="container">
+
+        <div class="four columns">
+            <img id="logo-footer" @Html.Raw(WebFunctions.GetImageTagProperty(ImageConstant.LogoWhite))/>
+            <p>@Html.DisplayFor(m => m.definition.LogoTitle2)</p>
+            <img id="footer-yetki-belge" @Html.Raw(WebFunctions.GetImageTagProperty(ImageConstant.FooterAuthorizationDocument)) />
+        </div>
+
+        <div class="four columns">
+            <h4>İletişim</h4>
+            <ul class="contact-details-alt">
+                <li>
+                    <i class="icon-map-marker"></i>
+                    <p><strong>Addres:</strong> @Html.DisplayFor(m => m.definition.Adress)</p>
+                </li>
+                <li>
+                    <i class="icon-user"></i>
+                    <p><strong>Phone:</strong> @Html.DisplayFor(m => m.definition.PhoneNumber)</p>
+                </li>
+                <li>
+                    <i class="icon-envelope"></i>
+                    <p><strong>Email:</strong> @Html.DisplayFor(m => m.definition.Email)</p>
+                </li>
+                <li>
+                    <i class="icon-facebook"></i>
+                    <p><strong><a href="@Html.DisplayFor(m => m.definition.Facebook)">Facebook</a></strong></p><br/>
+                </li>
+                <li>
+                    <i class="icon-instagram"></i>
+                    <p><strong><a href="@Html.DisplayFor(m => m.definition.Instagram)">Instagram</a></strong></p><br/>
+                </li>
+                <li>
+                    <i class="icon-twitter"></i>
+                    <p><strong><a href="@Html.DisplayFor(m => m.definition.Twitter)">Twitter</a></strong></p>
+                </li>
+            </ul>
+        </div>
+
+        <div class="four columns">
+            <h4>Hizmetlerimiz</h4>
+            <div class="flickr-widget">
+                <ul class="contact-details-alt">
+                @foreach (var service in Model.services)
+                {
+                    <li><i class="icon-minus"></i><p>@service.Name</p></li>
+                }
+                </ul>
+            </div>
+        </div>
+
+        <div class="four columns">
+            <h4>Hizmet Bölgelerimiz</h4>
+            <ul class="contact-details-alt">
+                <li>
+                    <i class="icon-cab"></i>
+                    <p><strong>Ankara </strong> Transfer</p>
+                </li>
+                <li>
+                    <i class="icon-cab"></i>
+                    <p><strong>Çankaya </strong> Transfer</p>
+                </li>
+                <li>
+                    <i class="icon-cab"></i>
+                    <p><strong>Keçiören </strong> Transfer</p>
+                </li>
+                <li>
+                    <i class="icon-cab"></i>
+                    <p><strong>Sincan </strong> Transfer</p>
+                </li>
+                <li>
+                    <i class="icon-cab"></i>
+                    <p><strong>Pursaklar </strong> Transfer</p>
+                </li>
+                <li>
+                    <i class="icon-cab"></i>
+                    <p><strong>Kızılay </strong> Transfer</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</footer>
+
+<footer id="footer-bottom">
+    <div class="container">
+        <div class="eight columns">
+            <div class="copyright">
+                © Copyright 2020 by <a href="#">Aydın Demirci</a>
+            </div>
+        </div>
+
+        <div class="eight columns">
+            <nav id="sub-menu">
+                <ul>
+                    <li><a href="#">S.S.S</a></li>
+                    <li><a href="#">Site Haritası</a></li>
+                    <li><a href="#">İletişim</a></li>
+                </ul>
+            </nav>
+        </div>
+
+    </div>
+
+</footer>
